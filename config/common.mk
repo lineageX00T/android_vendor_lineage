@@ -324,3 +324,9 @@ endif
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/lineage/config/partner_gms.mk
+
+# Camera
+ifneq ($(TARGET_APERTURE_OPTOUT),true)
+PRODUCT_PACKAGES += \
+    Aperture
+endif
