@@ -328,6 +328,5 @@ endif
 # Camera
 ifneq ($(TARGET_APERTURE_OPTOUT),true)
 PRODUCT_PACKAGES += \
-    Aperture \
-    Glimpse
+    Aperture
 endif
