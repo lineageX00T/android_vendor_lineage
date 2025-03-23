@@ -22,4 +22,7 @@ LINEAGE_TARGET_PACKAGE := $(PRODUCT_OUT)/lineage-$(LINEAGE_VERSION)-signed.zip
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LINEAGE_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(LINEAGE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(LINEAGE_TARGET_PACKAGE).md5sum
+        @echo "Datetime: `cat $(PRODUCT_OUT)/system/build.prop | grep ro.build.date.utc | cut -d'=' -f2 | awk '{print $$1}' `"
+        @echo "Size: `du -sh $(LINEAGE_TARGET_PACKAGE) | awk '{print $$1}' `"
+        @echo "Filehash: `md5sum $(LINEAGE_TARGET_PACKAGE) | awk '{print $$1}' `"
 	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
